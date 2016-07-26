@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" A tool meant to assist people learning different alphabets. ">
+    <meta name="author" content=" Alexandra Mihalcea ">
+
+    <title> Alphabet Learning Assistant </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/custom.css" rel="stylesheet">
+    
+
+
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700" rel="stylesheet" type="text/css">
+
+
+	<!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.js"></script>
+   
+
+</head>
+
+<body>
+
+	<!-- Title -->
+	<div class="title">
+    	<div class="col-lg-12"> <h1>  <i class="fa fa-mortar-board fa-fw" style="color:#9900cc"></i> Alphabet Learning Assistant </h1></div></div>
+    
+    <!-- Main Menu -->
+	<div class="menu main-menu hidden-menu" id="mainMenu">
+    
+    	<div class="container" style="text-align:center;">
+            <div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo('hiragana')">Hiragana (あ)</button>
+             </div>
+             <div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo('katakana')">Katakana (ア)</button>
+             </div>   
+             <div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo('kanji')">Kanji (学)</button>
+            </div>
+            <div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo('cyrillic')">Cyrillic (Ж)</button>
+            </div>
+        </div>
+   </div><!--/Main Menu-->
+   
+   <!-- Hiragana -->
+   <div class="menu hidden-menu" id="hiragana">
+       	<div class="container" style="text-align:center;">
+        	<h2 style="color:#9900cc"> Hiragana ( ひらがな )</h2>
+            <div class="row">
+                <button type="button" class="btn btn-default" onClick="goTo('hiragana_table')">View Table</button>
+             </div>
+             <div class="row">
+                <button type="button" class="btn btn-default" onClick="TakeQuiz(Hiragana,'Hiragana ( ひらがな )','hiragana');">Start Quiz</button>
+             </div>   
+            <div class="row">
+                <button type="button" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
+            </div>
+            
+        </div>
+   </div>
+   <div class="menu hidden-menu" id="hiragana_table">
+       	<div class="container" style="text-align:center;">
+        	<h2 style="color:#9900cc"> Hiragana ( ひらがな )</h2>
+            <div class="row" style="padding-top:50px" >
+                <button type="button" class="btn btn-default" onClick="goTo('hiragana')">Go back</button>
+            </div>
+            <div class="row">
+            <h4 style="text-transform:none;"> Press on the letters to change beween hiragana and romaji.</h4></div>
+            <div class="row">
+                <button id="hiragana_a" type="button" class="btn btn-table" onClick="toggleText(this.id,'a','あ');">あ</button>
+                <button id="hiragana_i" type="button" class="btn btn-table" onClick="toggleText(this.id,'i','い');">い</button>
+                <button id="hiragana_u" type="button" class="btn btn-table" onClick="toggleText(this.id,'u','う');">う</button>
+                <button id="hiragana_e" type="button" class="btn btn-table" onClick="toggleText(this.id,'e','え');">え</button>
+                <button id="hiragana_o" type="button" class="btn btn-table" onClick="toggleText(this.id,'o','お');">お</button>
+            </div>
+            <div class="row">
+            	<button type="button" class="btn btn-table btn-hidden"></button>
+                <button id="hiragana_ka" type="button" class="btn btn-table" onClick="toggleText(this.id,'ka','か');">か</button>
+                <button id="hiragana_ki" type="button" class="btn btn-table" onClick="toggleText(this.id,'ki','き');">き</button>
+                <button id="hiragana_ku" type="button" class="btn btn-table" onClick="toggleText(this.id,'ku','く');">く</button>
+                <button id="hiragana_ke" type="button" class="btn btn-table" onClick="toggleText(this.id,'ke','け');">け</button>
+                <button id="hiragana_ko" type="button" class="btn btn-table" onClick="toggleText(this.id,'ko','こ');">こ</button>
+                <button id="btn_hiragana_phonetics_ka" type="button" class="btn btn-table btn-round" onClick="toggleText(this.id,'+','-'); toggleVisibility('ka_phonetics');">+</button>
+            </div>
+            <div class="row hidden-menu" id="ka_phonetics">
+                <button id="hiragana_ga" type="button" class="btn btn-table" onClick="toggleText(this.id,'ga','が');">が</button>
+                <button id="hiragana_gi" type="button" class="btn btn-table" onClick="toggleText(this.id,'gi','ぎ');">ぎ</button>
+                <button id="hiragana_gu" type="button" class="btn btn-table" onClick="toggleText(this.id,'gu','ぐ');">ぐ</button>
+                <button id="hiragana_ge" type="button" class="btn btn-table" onClick="toggleText(this.id,'ge','げ');">げ</button>
+                <button id="hiragana_go" type="button" class="btn btn-table" onClick="toggleText(this.id,'go','ご');">ご</button>
+            </div>
+            <div class="row">
+            	<button type="button" class="btn btn-table btn-hidden"></button>
+                <button id="hiragana_sa" type="button" class="btn btn-table" onClick="toggleText(this.id,'sa','さ');">さ</button>
+                <button id="hiragana_shi" type="button" class="btn btn-table" onClick="toggleText(this.id,'shi','し');">し</button>
+                <button id="hiragana_su" type="button" class="btn btn-table" onClick="toggleText(this.id,'su','す');">す</button>
+                <button id="hiragana_se" type="button" class="btn btn-table" onClick="toggleText(this.id,'se','せ');">せ</button>
+                <button id="hiragana_so" type="button" class="btn btn-table" onClick="toggleText(this.id,'so','そ');">そ</button>
+                <button id="btn_hiragana_phonetics_sa" type="button" class="btn btn-table btn-round" onClick="toggleText(this.id,'+','-'); toggleVisibility('sa_phonetics');">+</button>
+            </div>
+            <div class="row hidden-menu" id="sa_phonetics">
+                <button id="hiragana_za" type="button" class="btn btn-table" onClick="toggleText(this.id,'za','ざ');">ざ</button>
+                <button id="hiragana_ji" type="button" class="btn btn-table" onClick="toggleText(this.id,'ji','じ');">じ</button>
+                <button id="hiragana_zu" type="button" class="btn btn-table" onClick="toggleText(this.id,'zu','ず');">ず</button>
+                <button id="hiragana_ze" type="button" class="btn btn-table" onClick="toggleText(this.id,'ze','ぜ');">ぜ</button>
+                <button id="hiragana_zo" type="button" class="btn btn-table" onClick="toggleText(this.id,'zo','ぞ');">ぞ</button>
+            </div>
+            <div class="row">
+            	<button type="button" class="btn btn-table btn-hidden"></button>
+                <button id="hiragana_ta" type="button" class="btn btn-table" onClick="toggleText(this.id,'ta','た');">た</button>
+                <button id="hiragana_chi" type="button" class="btn btn-table" onClick="toggleText(this.id,'chi','ち');">ち</button>
+                <button id="hiragana_tsu" type="button" class="btn btn-table" onClick="toggleText(this.id,'tsu','つ');">つ</button>
+                <button id="hiragana_te" type="button" class="btn btn-table" onClick="toggleText(this.id,'te','て');">て</button>
+                <button id="hiragana_to" type="button" class="btn btn-table" onClick="toggleText(this.id,'to','と');">と</button>
+                <button id="btn_hiragana_phonetics_t" type="button" class="btn btn-table btn-round" onClick="toggleText(this.id,'+','-'); toggleVisibility('ta_phonetics');">+</button>
+            </div>
+            <div class="row hidden-menu" id="ta_phonetics">
+                <button id="hiragana_da" type="button" class="btn btn-table" onClick="toggleText(this.id,'da','だ');">だ</button>
+                <button id="hiragana_ji2" type="button" class="btn btn-table" onClick="toggleText(this.id,'ji','ぢ');">ぢ</button>
+                <button id="hiragana_zu2" type="button" class="btn btn-table" onClick="toggleText(this.id,'zu','づ');">づ</button>
+                <button id="hiragana_de" type="button" class="btn btn-table" onClick="toggleText(this.id,'de','で');">で</button>
+                <button id="hiragana_do" type="button" class="btn btn-table" onClick="toggleText(this.id,'do','ど');">ど</button>
+            </div>
+            <div class="row">
+                <button id="hiragana_na" type="button" class="btn btn-table" onClick="toggleText(this.id,'na','な');">な</button>
+                <button id="hiragana_ni" type="button" class="btn btn-table" onClick="toggleText(this.id,'ni','に');">に</button>
+                <button id="hiragana_nu" type="button" class="btn btn-table" onClick="toggleText(this.id,'nu','ぬ');">ぬ</button>
+                <button id="hiragana_ne" type="button" class="btn btn-table" onClick="toggleText(this.id,'ne','ね');">ね</button>
+                <button id="hiragana_no" type="button" class="btn btn-table" onClick="toggleText(this.id,'no','の');">の</button>
+            </div>
+            <div class="row">
+            	<button type="button" class="btn btn-table btn-hidden"></button>
+                <button id="hiragana_ha" type="button" class="btn btn-table" onClick="toggleText(this.id,'ha','は');">は</button>
+                <button id="hiragana_hi" type="button" class="btn btn-table" onClick="toggleText(this.id,'hi','ひ');">ひ</button>
+                <button id="hiragana_fu" type="button" class="btn btn-table" onClick="toggleText(this.id,'fu','ふ');">ふ</button>
+                <button id="hiragana_he" type="button" class="btn btn-table" onClick="toggleText(this.id,'he','へ');">へ</button>
+                <button id="hiragana_ho" type="button" class="btn btn-table" onClick="toggleText(this.id,'ho','ほ');">ほ</button>
+                <button id="btn_hiragana_phonetics_ho" type="button" class="btn btn-table btn-round" onClick="toggleText(this.id,'+','-'); toggleVisibility('ha_phonetics2');toggleVisibility('ha_phonetics');">+</button>
+            </div>
+            <div class="row hidden-menu" id="ha_phonetics">
+                <button id="hiragana_ba" type="button" class="btn btn-table" onClick="toggleText(this.id,'ba','ば');">ば</button>
+                <button id="hiragana_bi" type="button" class="btn btn-table" onClick="toggleText(this.id,'bi','び');">び</button>
+                <button id="hiragana_bu" type="button" class="btn btn-table" onClick="toggleText(this.id,'bu','ぶ');">ぶ</button>
+                <button id="hiragana_be" type="button" class="btn btn-table" onClick="toggleText(this.id,'be','べ');">べ</button>
+                <button id="hiragana_bo" type="button" class="btn btn-table" onClick="toggleText(this.id,'bo','ぼ');">ぼ</button>
+            </div>
+            <div class="row hidden-menu" id="ha_phonetics2">
+                <button id="hiragana_pa" type="button" class="btn btn-table" onClick="toggleText(this.id,'pa','ぱ');">ぱ</button>
+                <button id="hiragana_pi" type="button" class="btn btn-table" onClick="toggleText(this.id,'pi','ぴ');">ぴ</button>
+                <button id="hiragana_pu" type="button" class="btn btn-table" onClick="toggleText(this.id,'pu','ぷ');">ぷ</button>
+                <button id="hiragana_pe" type="button" class="btn btn-table" onClick="toggleText(this.id,'pe','ぺ');">ぺ</button>
+                <button id="hiragana_po" type="button" class="btn btn-table" onClick="toggleText(this.id,'po','ぽ');">ぽ</button>
+            </div>
+            <div class="row">
+                <button id="hiragana_ma" type="button" class="btn btn-table" onClick="toggleText(this.id,'ma','ま');">ま</button>
+                <button id="hiragana_mi" type="button" class="btn btn-table" onClick="toggleText(this.id,'mi','み');">み</button>
+                <button id="hiragana_mu" type="button" class="btn btn-table" onClick="toggleText(this.id,'mu','む');">む</button>
+                <button id="hiragana_me" type="button" class="btn btn-table" onClick="toggleText(this.id,'me','め');">め</button>
+                <button id="hiragana_mo" type="button" class="btn btn-table" onClick="toggleText(this.id,'mo','も');">も</button>
+            </div>
+            <div class="row">
+                <button id="hiragana_ya" type="button" class="btn btn-table" onClick="toggleText(this.id,'ya','や');">や</button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+                <button id="hiragana_yu" type="button" class="btn btn-table" onClick="toggleText(this.id,'yu','ゆ');">ゆ</button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+                <button id="hiragana_yo" type="button" class="btn btn-table" onClick="toggleText(this.id,'yo','よ');">よ</button>
+            </div>
+            <div class="row">
+                <button id="hiragana_ra" type="button" class="btn btn-table" onClick="toggleText(this.id,'ra','ら');">ら</button>
+                <button id="hiragana_ri" type="button" class="btn btn-table" onClick="toggleText(this.id,'ri','り');">り</button>
+                <button id="hiragana_ru" type="button" class="btn btn-table" onClick="toggleText(this.id,'ru','る');">る</button>
+                <button id="hiragana_re" type="button" class="btn btn-table" onClick="toggleText(this.id,'re','れ');">れ</button>
+                <button id="hiragana_ro" type="button" class="btn btn-table" onClick="toggleText(this.id,'ro','ろ');">ろ</button>
+            </div>
+            <div class="row">
+                <button id="hiragana_wa" type="button" class="btn btn-table" onClick="toggleText(this.id,'wa','わ');">わ</button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+                <button id="hiragana_wo" type="button" class="btn btn-table" onClick="toggleText(this.id,'wo','を');">を</button>
+            </div>
+            <div class="row">
+                <button id="hiragana_n" type="button" class="btn btn-table" onClick="toggleText(this.id,'n','ん');">ん</button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+                <button type="button" class="btn btn-table btn-hidden"></button>
+            </div>
+        </div>
+   </div>
+   <!-- /Hiragana -->
+   
+   <!-- Table -->
+    <div class="menu hidden-menu" id="table">
+       	<div class="container" style="text-align:center;" id="table-container">
+        	<h2 id="table-title" style="color:#9900cc"> </h2>
+            <div class="row" style="padding-top:50px" >
+                <button id="table-back-button" type="button" class="btn btn-default">Go back</button>
+            </div>
+            <div class="row">
+            <h4 id="table-description" style="text-transform:none;"></h4></div>
+        </div>
+   </div>
+   <!-- Table -->
+   
+ <!-- Quiz -->
+   <div class="menu hidden-menu" id="quiz">
+       	<div class="container" style="text-align:center;">
+        	<h2 id="quiz-title" style="color:#9900cc"> </h2>
+            <div class="row">
+            <h4 id="quiz-percentage">  </h4>
+            </div>
+            <div class="row">
+           		<button type="button" class="btn question-quiz" id="question-quiz">Q</button> 
+            </div>
+            <div class="row">
+                <button type="button" id="quiz_button_1" class="btn btn-quiz">A</button>
+                <button type="button" id="quiz_button_2" class="btn btn-quiz">A</button>
+                <button type="button" id="quiz_button_3" class="btn btn-quiz">A</button>
+                <button type="button" id="quiz_button_4" class="btn btn-quiz">A</button>
+            </div>
+            <div class="row" style="padding-top:50px" >
+                <button id="quiz-back-button"type="button" class="btn btn-default">Go back</button>
+            </div>
+        </div>
+   </div>
+ <!-- /Quiz -->
+   
+   <!-- Katakana -->
+   <div class="menu hidden-menu" id="katakana">
+   	<div class="container" style="text-align:center;">
+        	<h2 style="color:#9900cc"> Katakana ( カタカナ )</h2>
+            <div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(Katakana, 'Katakana ( カタカナ )','Press on the letters to change beween katakana and romaji.','katakana',5)">View Table</button>
+             </div>
+             <div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(Katakana,'Katakana ( カタカナ )','katakana');">Start Quiz</button>
+             </div>               
+            <div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
+            </div>
+        </div>
+   </div>
+   <!-- /Katakana -->
+   
+   <!-- Kanji -->
+   <div class="menu hidden-menu" id="kanji">
+   		<div class="container" style="text-align:center;">
+   				
+                <div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(Kanji,'Kanji ( 学 )','kanji');">Start Quiz</button>
+             </div>
+             <div class="row">
+                	<button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
+                </div>
+            </div>
+   </div><!-- /Kanji -->
+   
+   <!-- Cyrillic -->
+   <div class="menu hidden-menu" id="cyrillic">
+   <div class="container" style="text-align:center;">
+   			<div class="row">
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
+                </div>
+            </div>
+   </div><!-- /Cyrillic -->
+   
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <h6>Copyright &copy; Alexandra Mihalcea <script>document.write(new Date().getFullYear())</script></h6>
+        </div>
+    </footer>
+
+</body>
+
+</html>
