@@ -70,7 +70,7 @@
     <div class="menu hidden-menu" id="table">
        	<div class="container" style="text-align:center;" id="table-container">
         	<h2 id="table-title" style="color:#9900cc"> </h2>
-            <div class="row" style="padding-top:50px" >
+            <div class="row" style="padding-top:30px" >
                 <button id="table-back-button" type="button" class="btn btn-default">Go back</button>
             </div>
             <div class="row">
@@ -110,10 +110,10 @@
        	<div class="container" style="text-align:center;">
         	<h2 style="color:#9900cc"> Hiragana ( ひらがな )</h2>
             <div class="row">
-                <button type="button" class="btn btn-default" onClick="GenerateTable(Hiragana, 'Hiragana ( ひらがな )' ,'Press on the letters to change beween hiragana and romaji.','hiragana',5)">View Table</button>
+                <button type="button" class="btn btn-default" onClick="GenerateTable(info.hiragana)">View Table</button>
              </div>
              <div class="row">
-                <button type="button" class="btn btn-default" onClick="TakeQuiz(Hiragana,'Hiragana ( ひらがな )','hiragana');">Start Quiz</button>
+                <button type="button" class="btn btn-default" onClick="TakeQuiz(info.hiragana);">Start Quiz</button>
              </div>   
             <div class="row">
                 <button type="button" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
@@ -128,10 +128,10 @@
    	<div class="container" style="text-align:center;">
         	<h2 style="color:#9900cc"> Katakana ( カタカナ )</h2>
             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(Katakana, 'Katakana ( カタカナ )','Press on the letters to change beween katakana and romaji.','katakana',5)">View Table</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(info.katakana)">View Table</button>
              </div>
              <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(Katakana,'Katakana ( カタカナ )','katakana');">Start Quiz</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(info.katakana);">Start Quiz</button>
              </div>               
             <div class="row">
                 <button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
@@ -145,10 +145,10 @@
    		<div class="container" style="text-align:center;">
         	<h2 style="color:#9900cc"> Kanji (漢字) </h2>
 			<div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(Kanji,'Kanji (漢字)','Press on the letters to change beween kanji and romaji.','kanji',6)">View Table</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(info.kanji)">View Table</button>
              </div>   				
              <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(Kanji,'Kanji ( 学 )','kanji');">Start Quiz</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(info.kanji);">Start Quiz</button>
              </div>
              <div class="row">
                 	<button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
@@ -161,10 +161,10 @@
    	<div class="container" style="text-align:center;">
         	<h2 style="color:#9900cc"> Russian Cyrillic (кириллица)</h2>
             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(Cyrillic,'Russian Cyrillic (кириллица)','Press on the letters to change beween cyrillic and latin.','cyrillic',6)">View Table</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(info.cyrillic)">View Table</button>
              </div>
              <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(Cyrillic,'Russian Cyrillic (кириллица)','cyrillic');">Start Quiz</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(info.cyrillic);">Start Quiz</button>
              </div>               
             <div class="row">
                 <button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>

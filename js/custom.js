@@ -25,7 +25,6 @@ window.onload = function() {
   target.style.display = "block";
 };
 
-
 //Available alphabets 
 var Hiragana=['a','あ', 'i', 'い', 'u', 'う','e','え', 'o','お', 
 			  'ka','か', 'ki', 'き', 'ku', 'く','ke','け', 'ko','こ', 
@@ -61,7 +60,7 @@ var Katakana=['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ',
 			  'wa','ワ', null, null, null, null, null, null, 'wo','ヲ',
 			  'n','ン', null, null, null, null, null, null, null, null];
 			  
-var Kanji =   ['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ', 
+var Kanji =   ['一','ichi(one)', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ', 
 			  'ka','カ', 'ki', 'キ', 'ku', 'ク','ke','ケ', 'ko','コ', 
 			  'ga','ガ', 'gi', 'ギ', 'gu', 'グ','ge','ゲ', 'go','ゴ',
 			  'sa','サ', 'shi', 'シ', 'su', 'ス','se','セ', 'so','ソ',
@@ -82,29 +81,63 @@ var Cyrillic=['a', 'а', 'b', 'б', 'v',  'в', 'g',  'г', 'd', 'д', 'e', 'е'
 			  'ë', 'ё',	 'ž', 'ж', 'z',  'з', 'i',  'и','j', 'й',  'k', 'к',
 			  'l', 'л', 'm', 'м', 'n',  'н', 'o',  'о', 'p', 'п', 'r', 'р',
 			  's', 'с', 't', 'т', 'u',  'у', 'f',  'ф', 'h', 'х', 'c', 'ц',
-			  'č', 'ч', 'š', 'ш', 'šč', 'щ', '’’', 'ъ', 'y', 'ы', '’', 'ь',
-			  'è', 'э', 'û', 'ю', 'â', 'я', null, null, null, null, null, null];
+			  'č', 'ч', 'š', 'ш', 'šč', 'щ', 'y', 'ы',  'è', 'э', 'û', 'ю',
+			  'â', 'я', null, null, null, null, null, null, null, null, null, null];
+
+
+//page information
+var info = {
+	hiragana:{
+		array: Hiragana,
+		title:"Hiragana ( ひらがな )",
+		description:"Press on the letters to change beween hiragana and romaji.",
+		url:"hiragana",
+		rows:5
+	},
+	katakana:{
+		array: Katakana,
+		title:"Katakana ( カタカナ )",
+		description:"Press on the letters to change beween katakana and romaji.",
+		url:"katakana",
+		rows:5
+	},
+	kanji:{
+		array: Kanji,
+		title:"Kanji (漢字)",
+		description:"Press on the letters to change beween kanji and romaji.",
+		url:"kanji",
+		rows:1
+	},
+	cyrillic:{
+		array: Cyrillic,
+		title:"Russian Cyrillic (кириллица)",
+		description:"Press on the letters to change beween cyrillic and their latin counterparts.",
+		url:"cyrillic",
+		rows:6
+	}
+	
+};
 			  
 var correct_answers, wrong_answers;	
 
 //Table Functions
 
-function GenerateTable(array, title, description, source, row_length){
+function GenerateTable(source){
 	
-	var counter=0, row=1;
+	var counter=0, row=1,array;
 	goTo('table');
 	ResetTable();
-	document.getElementById("table-title").innerHTML=title;
-	document.getElementById("table-description").innerHTML=description;
+	document.getElementById("table-title").innerHTML=source.title;
+	document.getElementById("table-description").innerHTML=source.description;
 	document.getElementById("table-back-button").onclick = (function(a) {
     return function() {
        goTo(a);
     };
-	})(source);
-	while(counter<array.length-1){
+	})(source.url);
+	while(counter<source.array.length-1){
 		CreateRow(row);
-		for(var i=0;i<row_length;i++){
-		CreateButton(array[counter+1], array[counter],"table-row-"+row);
+		for(var i=0;i<source.rows;i++){
+		DecideButtonType(source.array[counter+1], source.array[counter],"table-row-"+row,source.rows);
 		counter+=2;
 		}
 		row++;
@@ -119,40 +152,32 @@ function CreateRow(num){
     target.appendChild(div);	
 }
 
-function CreateButton(face_a, face_b,target_ID){
-	var button, t, target;
+function DecideButtonType(face_a, face_b,target_ID,row_length){
 	if(!document.getElementById(face_b)&&(face_a!==null||face_b!==null)){
-		button = document.createElement("BUTTON");
-		t = document.createTextNode(face_a);
-		button.type="button";
-		button.className="btn btn-table";
-		button.id=face_a;
-		button.appendChild(t);
-		button.onclick = (function(a,b,c) {
-		return function() {
-		   toggleText(a,b,c);
-		};
-		})(button.id,face_a, face_b);
-		target = document.getElementById(target_ID);
-		target.appendChild(button);	
+		CreateButton(face_a, face_b,target_ID,row_length, face_a, "btn btn-table" );
 	}
 	if(face_a===null||face_b===null){
-		button = document.createElement("BUTTON");
-		t = document.createTextNode(face_a);
-		button.type="button";
-		button.className="btn btn-table btn-hidden btn-disabled";
-		button.id="empty-space";
-		button.appendChild(t);
-		button.onclick = (function(a,b,c) {
-		return function() {
-		   toggleText(a,b,c);
-		};
-		})(button.id,face_a, face_b);
-		target = document.getElementById(target_ID);
-		target.appendChild(button);	
+		CreateButton(face_a, face_b,target_ID,row_length,"empty-space", "btn btn-table btn-hidden btn-disabled");
 	}
-	
+}
 
+function CreateButton(face_a, face_b,target_ID,row_length,button_id, button_class){
+	var button, t, target, size;
+	size=75/row_length+"vw !important";
+	button = document.createElement("BUTTON");
+	t = document.createTextNode(face_a);
+	button.type="button";
+	button.className=button_class;
+	button.id=button_id;
+	button.setAttribute("style", "width:"+size+";height:"+size);
+	button.appendChild(t);
+	button.onclick = (function(a,b,c) {
+	return function() {
+		  toggleText(a,b,c);
+	};
+	})(button.id,face_a, face_b);
+	target = document.getElementById(target_ID);
+	target.appendChild(button);	
 }
 
 function ResetTable(){	
@@ -160,36 +185,37 @@ function ResetTable(){
 	$(target).empty();
 }
 
+
+
 //Quiz Functions
-$('btn-table').height($('btn-table').width());
-function TakeQuiz(x,y,z){
+
+function TakeQuiz(source){
 	ResetScore();
 	goTo('quiz');
-	document.getElementById("quiz-title").innerHTML=y;
+	document.getElementById("quiz-title").innerHTML=source.title;
 	document.getElementById("quiz-back-button").onclick = (function(a) {
-    return function() {
-       goTo(a);
-    };
-	})(z);
+		return function() {
+		   goTo(a);
+		};
+	})(source.url);
 	document.getElementById("quiz-skip-button").onclick = (function(a) {
-    return function() {
-       MakeQuestion(a);
-    };
-	})(x);
+		return function() {
+		   MakeQuestion(a);
+		};
+	})(source.array);
 	document.getElementById("quiz-skip-button").className += " btn-skip";
-	MakeQuestion(x);
+	MakeQuestion(source.array);
 	var buttons = document.getElementsByClassName("btn-quiz");
-	
 	for(var i=0; i<4;i++){
-	var button_id=buttons[i].id;
-	buttons[i].onclick = (function(opt1, opt2) {
-    return function() {
-       checkAnswer(opt1, opt2);
-	   MakeQuestion(x);
-	   UpdateScore();
-    };
-	})(button_id,x);
-	console.log(buttons[i]);
+		var button_id=buttons[i].id;
+		buttons[i].onclick = (function(opt1, opt2) {
+		return function() {
+		   checkAnswer(opt1, opt2);
+		   MakeQuestion(source.array);
+		   UpdateScore();
+		};
+		})(button_id,source.array);
+		console.log(buttons[i]);
 	}
 }
 
