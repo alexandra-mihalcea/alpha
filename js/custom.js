@@ -92,28 +92,28 @@ var info = {
 		title:"Hiragana ( ひらがな )",
 		description:"Press on the letters to change beween hiragana and romaji.",
 		url:"hiragana",
-		rows:5
+		rows:5,
 	},
 	katakana:{
 		array: Katakana,
 		title:"Katakana ( カタカナ )",
 		description:"Press on the letters to change beween katakana and romaji.",
 		url:"katakana",
-		rows:5
+		rows:5,
 	},
 	kanji:{
 		array: Kanji,
 		title:"Kanji (漢字)",
 		description:"Press on the letters to change beween kanji and romaji.",
 		url:"kanji",
-		rows:1
+		rows:1,
 	},
 	cyrillic:{
 		array: Cyrillic,
 		title:"Russian Cyrillic (кириллица)",
 		description:"Press on the letters to change beween cyrillic and their latin counterparts.",
 		url:"cyrillic",
-		rows:6
+		rows:6,
 	}
 	
 };
