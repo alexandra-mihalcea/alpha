@@ -176,7 +176,7 @@ function TakeQuiz(x,y,z){
        MakeQuestion(a);
     };
 	})(x);
-	document.getElementById("quiz-skip-button").style = "margin-right:10px;"
+	document.getElementById("quiz-skip-button").className += " btn-skip";
 	MakeQuestion(x);
 	var buttons = document.getElementsByClassName("btn-quiz");
 	
