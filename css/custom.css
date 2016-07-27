@@ -88,8 +88,11 @@ p3 {
 }
 .row{
 	padding:20px;
+}
+
+.force-inline{
 	overflow: hidden;
-    white-space: nowrap;	
+    white-space: nowrap;		
 }
 
 
