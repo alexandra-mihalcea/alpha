@@ -26,7 +26,7 @@ window.onload = function() {
 };
 
 
-//Hiragana 
+//Available alphabets 
 var Hiragana=['a','あ', 'i', 'い', 'u', 'う','e','え', 'o','お', 
 			  'ka','か', 'ki', 'き', 'ku', 'く','ke','け', 'ko','こ', 
 			  'ga','が', 'gi', 'ぎ', 'gu', 'ぐ','ge','げ', 'go','ご',
@@ -44,7 +44,6 @@ var Hiragana=['a','あ', 'i', 'い', 'u', 'う','e','え', 'o','お',
 			  'wa','わ', 'wo','を',
 			  'n','ん'];
 			  
-//Katakana 
 var Katakana=['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ', 
 			  'ka','カ', 'ki', 'キ', 'ku', 'ク','ke','ケ', 'ko','コ', 
 			  'ga','ガ', 'gi', 'ギ', 'gu', 'グ','ge','ゲ', 'go','ゴ',
@@ -141,6 +140,11 @@ function TakeQuiz(x,y,z){
        goTo(a);
     };
 	})(z);
+	document.getElementById("quiz-skip-button").onclick = (function(a) {
+    return function() {
+       MakeQuestion(a);
+    };
+	})(x);
 	MakeQuestion(x);
 	var buttons = document.getElementsByClassName("btn-quiz");
 	
@@ -161,7 +165,7 @@ function UpdateScore(){
 		var total= correct_answers+wrong_answers;
 		var result;
 		result = (correct_answers*100)/total;
-		document.getElementById("quiz-percentage").innerHTML=(result.toFixed(2))+"% correct answers!";
+		document.getElementById("quiz-percentage").innerHTML=(correct_answers+" ("+result.toFixed(2))+"%) correct answers out of "+total+"!";
 }
 
 function ResetScore(){
@@ -173,11 +177,11 @@ function ResetScore(){
 function MakeQuestion(x){
 	var type=Math.floor(Math.random() * 2);
 	if (type===0){
-	type-1;
+	type=type-1;
 	}
-	var question=Math.floor(Math.random() * x.length+1)-type;
+	var question=Math.floor(Math.random() * x.length)-type;
 	var correct_answer, temp;
-	if(question %2==0){
+	if(question %2===0){
 		correct_answer=question+1;
 	}
 	else{
@@ -189,9 +193,10 @@ function MakeQuestion(x){
 	var buttons = document.getElementsByClassName("btn-quiz");
 	
 	var answer=[];
+	
 	for(var i=0; i<4;i++){
 		do{
-		temp=Math.floor(Math.random() * x.length)+type;}while(question%2==temp%2);
+		temp=Math.floor(Math.random() * x.length-2)+type;}while(question%2===temp%2);
 		answer[i]=x[temp];}
 	var correct_num=Math.floor(Math.random() * 4);
 	answer[correct_num]=x[correct_answer];
@@ -200,6 +205,7 @@ function MakeQuestion(x){
 	}
 	
 }
+c
 
 function checkAnswer(button_id,x){
 		var correct;
