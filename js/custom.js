@@ -161,7 +161,7 @@ function ResetTable(){
 }
 
 //Quiz Functions
-
+$('btn-table').height($('btn-table').width());
 function TakeQuiz(x,y,z){
 	ResetScore();
 	goTo('quiz');
