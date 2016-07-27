@@ -113,7 +113,7 @@ function GenerateTable(array, title, description, source, row_length){
 }
 function CreateRow(num){
 	var div = document.createElement('div');
-	div.className="row table-row";
+	div.className="row table-row force-inline";
 	div.id="table-row-"	+num;
 	var target = document.getElementById("table-inner-container");
     target.appendChild(div);	
