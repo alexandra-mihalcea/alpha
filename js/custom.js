@@ -39,11 +39,11 @@ var Hiragana=['a','あ', 'i', 'い', 'u', 'う','e','え', 'o','お',
 			  'ba','ば', 'bi', 'び', 'bu', 'ぶ','be','べ', 'bo','ぼ',
 			  'pa','ぱ', 'pi', 'ぴ', 'pu', 'ぷ','pe','ぺ', 'po','ぽ',
 			  'ma','ま', 'mi', 'み', 'mu', 'む','me','め', 'mo','も',
-			  'ya','や', 'yu', 'ゆ', 'yo','よ',
+			  'ya','や', null, null, 'yu', 'ゆ', null, null, 'yo','よ',
 			  'ra','ら', 'ri', 'り', 'ru', 'る','re','れ', 'ro','ろ',
-			  'wa','わ', 'wo','を',
-			  'n','ん'];
-			  
+			  'wa','わ', null, null, null, null, null, null, 'wo','を',
+			  'n','ん',null, null, null, null, null, null, null, null];
+		  
 var Katakana=['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ', 
 			  'ka','カ', 'ki', 'キ', 'ku', 'ク','ke','ケ', 'ko','コ', 
 			  'ga','ガ', 'gi', 'ギ', 'gu', 'グ','ge','ゲ', 'go','ゴ',
@@ -56,12 +56,12 @@ var Katakana=['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ',
 			  'ba','バ', 'bi', 'ビ', 'bu', 'ブ','be','ベ', 'bo','ボ',
 			  'pa','パ', 'pi', 'ピ', 'pu', 'プ','pe','ペ', 'po','ポ',
 			  'ma','マ', 'mi', 'ミ', 'mu', 'ム','me','メ', 'mo','モ',
-			  'ya','ヤ', 'yu', 'ユ', 'yo','ヨ',
+			  'ya','ヤ', null, null, 'yu', 'ユ', null, null, 'yo','ヨ',
 			  'ra','ラ', 'ri', 'リ', 'ru', 'ル','re','レ', 'ro','ロ',
-			  'wa','ワ', 'wo','ヲ',
-			  'n','ン'];
-
-var Cyrillic=['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ', 
+			  'wa','ワ', null, null, null, null, null, null, 'wo','ヲ',
+			  'n','ン', null, null, null, null, null, null, null, null];
+			  
+var Kanji =   ['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ', 
 			  'ka','カ', 'ki', 'キ', 'ku', 'ク','ke','ケ', 'ko','コ', 
 			  'ga','ガ', 'gi', 'ギ', 'gu', 'グ','ge','ゲ', 'go','ゴ',
 			  'sa','サ', 'shi', 'シ', 'su', 'ス','se','セ', 'so','ソ',
@@ -73,18 +73,27 @@ var Cyrillic=['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ',
 			  'ba','バ', 'bi', 'ビ', 'bu', 'ブ','be','ベ', 'bo','ボ',
 			  'pa','パ', 'pi', 'ピ', 'pu', 'プ','pe','ペ', 'po','ポ',
 			  'ma','マ', 'mi', 'ミ', 'mu', 'ム','me','メ', 'mo','モ',
-			  'ya','ヤ', 'yu', 'ユ', 'yo','ヨ',
+			  'ya','ヤ', null, null, 'yu', 'ユ', null, null, 'yo','ヨ',
 			  'ra','ラ', 'ri', 'リ', 'ru', 'ル','re','レ', 'ro','ロ',
-			  'wa','ワ', 'wo','ヲ',
-			  'n','ン'];
+			  'wa','ワ', null, null, null, null, null, null, 'wo','ヲ',
+			  'n','ン', null, null, null, null, null, null, null, null];
+
+var Cyrillic=['a', 'а', 'b', 'б', 'v',  'в', 'g',  'г', 'd', 'д', 'e', 'е',
+			  'ë', 'ё',	 'ž', 'ж', 'z',  'з', 'i',  'и','j', 'й',  'k', 'к',
+			  'l', 'л', 'm', 'м', 'n',  'н', 'o',  'о', 'p', 'п', 'r', 'р',
+			  's', 'с', 't', 'т', 'u',  'у', 'f',  'ф', 'h', 'х', 'c', 'ц',
+			  'č', 'ч', 'š', 'ш', 'šč', 'щ', '’’', 'ъ', 'y', 'ы', '’', 'ь',
+			  'è', 'э', 'û', 'ю', 'â', 'я', null, null, null, null, null, null];
 			  
 var correct_answers, wrong_answers;	
 
 //Table Functions
 
 function GenerateTable(array, title, description, source, row_length){
+	
 	var counter=0, row=1;
 	goTo('table');
+	ResetTable();
 	document.getElementById("table-title").innerHTML=title;
 	document.getElementById("table-description").innerHTML=description;
 	document.getElementById("table-back-button").onclick = (function(a) {
@@ -104,29 +113,51 @@ function GenerateTable(array, title, description, source, row_length){
 }
 function CreateRow(num){
 	var div = document.createElement('div');
-	div.className="row";
+	div.className="row table-row";
 	div.id="table-row-"	+num;
-	var target = document.getElementById("table-container");
+	var target = document.getElementById("table-inner-container");
     target.appendChild(div);	
 }
+
 function CreateButton(face_a, face_b,target_ID){
-	if(!document.getElementById(face_b)&&(face_a!=null||face_b!=null)){
-		var button = document.createElement("BUTTON");
-		var t = document.createTextNode(face_a);
+	var button, t, target;
+	if(!document.getElementById(face_b)&&(face_a!==null||face_b!==null)){
+		button = document.createElement("BUTTON");
+		t = document.createTextNode(face_a);
 		button.type="button";
 		button.className="btn btn-table";
-		button.id=face_b;
+		button.id=face_a;
 		button.appendChild(t);
 		button.onclick = (function(a,b,c) {
 		return function() {
 		   toggleText(a,b,c);
 		};
 		})(button.id,face_a, face_b);
-		var target = document.getElementById(target_ID);
+		target = document.getElementById(target_ID);
+		target.appendChild(button);	
+	}
+	if(face_a===null||face_b===null){
+		button = document.createElement("BUTTON");
+		t = document.createTextNode(face_a);
+		button.type="button";
+		button.className="btn btn-table btn-hidden btn-disabled";
+		button.id="empty-space";
+		button.appendChild(t);
+		button.onclick = (function(a,b,c) {
+		return function() {
+		   toggleText(a,b,c);
+		};
+		})(button.id,face_a, face_b);
+		target = document.getElementById(target_ID);
 		target.appendChild(button);	
 	}
 	
 
+}
+
+function ResetTable(){	
+	var target = document.getElementById("table-inner-container");
+	$(target).empty();
 }
 
 //Quiz Functions
@@ -145,6 +176,7 @@ function TakeQuiz(x,y,z){
        MakeQuestion(a);
     };
 	})(x);
+	document.getElementById("quiz-skip-button").style = "margin-right:10px;"
 	MakeQuestion(x);
 	var buttons = document.getElementsByClassName("btn-quiz");
 	
@@ -179,7 +211,10 @@ function MakeQuestion(x){
 	if (type===0){
 	type=type-1;
 	}
-	var question=Math.floor(Math.random() * x.length)-type;
+	var question;
+	do{
+		question=Math.floor(Math.random() * x.length-2)-type;}while( x[question]===null||question<0);
+	console.log(question);
 	var correct_answer, temp;
 	if(question %2===0){
 		correct_answer=question+1;
@@ -196,16 +231,18 @@ function MakeQuestion(x){
 	
 	for(var i=0; i<4;i++){
 		do{
-		temp=Math.floor(Math.random() * x.length-2)+type;}while(question%2===temp%2);
+		temp=Math.floor(Math.random() * x.length-2)+type;
+		}while(question%2===temp%2||x[temp]===null||temp<0||answer.includes(x[temp])||temp===correct_answer);//prevent any duplicates or any empty tiles
 		answer[i]=x[temp];}
 	var correct_num=Math.floor(Math.random() * 4);
 	answer[correct_num]=x[correct_answer];
+	
 	for(i=0; i<4;i++){
 		buttons[i].firstChild.data = answer[i];
 	}
 	
 }
-c
+
 
 function checkAnswer(button_id,x){
 		var correct;

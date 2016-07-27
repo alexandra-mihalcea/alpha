@@ -117,6 +117,17 @@ h6{
 	border-color: transparent!important; 
 	cursor: default!important;
 	}
+	
+	
+.btn-hidden:hover,
+.btn-hidden:focus,
+.btn-hidden:focus,
+.btn-hidden:active,
+.btn-hidden.active.focus,.btn-hidden.active:focus,.btn-hidden.active:hover,.btn-hidden:active.focus,.btn-hidden:active:focus,.btn-hidden:active:hover,.open>.dropdown-toggle.btn-hidden.focus,.open>.dropdown-toggle.btn-hidden:focus,.open>.dropdown-toggle.btn-hidden:hover {
+	height:130px!important;
+	width:130px!important;
+}	
+	
 .question-quiz {
     color: #9900cc;
 	font-family: Noto Sans;
@@ -145,6 +156,7 @@ h6{
 	border-radius:150px;
 
 }
+
 .btn-table:hover,
 .btn-table:focus,
 .btn-table:focus,
