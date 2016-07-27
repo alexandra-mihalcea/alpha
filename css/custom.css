@@ -304,8 +304,13 @@ footer p {
 	width:95%;
 }
 h1{
+	font-size: 25px!important;
+	padding: 2px;
+	}
+	
+h2{
 	font-size: 20px;
-	padding: 10px;
+	padding: 0px;
 	}
 .btn:hover,
 .btn:focus,
