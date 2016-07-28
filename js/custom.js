@@ -35,9 +35,18 @@ var Katakana=['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ',
     'wa','ワ', null, null, null, null, null, null, 'wo','ヲ',
     'n','ン', null, null, null, null, null, null, null, null];
 
-var Kanji =   ['ichi(1)', '一', 'ni(2)','二', 'san(3)','三', 'yon(4)', '四',
-    'go(5)', '五','roku(6)', '六', 'nana(7)','七', 'hachi(8)','八',
-    'hyaku(100)', '百', 'sen(1000)', '千','man(10.000)', '万', 'nani(what)', '何'];
+var Kanji =   ['ichi (1)', '一', 'ni (2)','二', 'san (3)','三',
+                'yon (4)', '四', 'go (5)', '五','roku (6)', '六',
+                'nana (7)','七', 'hachi (8)','八', 'kyuu (9)', '九',
+                'juu(10)', '十', 'hyaku (100)', '百', 'sen (1000)', '千',
+                ' man (10.000)', '万', 'rei (zero)', '零', 'nani (what)', '何',
+                'hi (day/sun)','日','gatsu (month)', '月', 'tera (temple)', '寺',
+                'ho (fire)', '火', 'mizu (water)','水', 'tsuchi (earth)','土',
+                'ki (tree)', '木','oo (large)', '大','chii (small)','小',
+                 'naka (inside)', '中', 'ue (on)','上','shita (under)', '下',
+                'migi (right)','右','hidari (left)','左', 'ishi (stone)','石',
+                'hito (person)','人','soto (outside)','外','kuchi (mouth)','口',
+                'me (eye)', '目', 'te (hand)', '手', 'ashi (foot)', '足'];
 
 var Cyrillic=['a', 'а', 'b', 'б', 'v',  'в', 'g',  'г', 'd', 'д', 'e', 'е',
     'ë', 'ё',	 'ž', 'ж', 'z',  'з', 'i',  'и','j', 'й',  'k', 'к',
@@ -70,7 +79,7 @@ var info = {
         title:"Kanji (漢字)",
         description:"Press on the letters to change beween kanji and romaji.",
         url:"kanji",
-        rows:4,
+        rows:3,
         buttonshape:"rectangle"
     },
     cyrillic:{
@@ -167,7 +176,7 @@ function CreateButton(face_a, face_b,target_ID,row_length,button_id, button_clas
         }
         else{
             size=80/row_length;
-            font_size=3;
+            font_size=4;
         }
     }
     else{

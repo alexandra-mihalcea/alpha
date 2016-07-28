@@ -61,6 +61,10 @@ p {
 	padding:20px;
 }
 
+.table-row{
+	padding: 0.5vw;
+}
+
 .force-inline{
 	overflow: hidden;
     white-space: nowrap;		
@@ -80,6 +84,7 @@ p {
     transition: all .3s ease-in-out;
 	height:60px;
 	width:300px;
+	padding: 0;
 }
 
 .btn:hover,
@@ -114,6 +119,8 @@ p {
 	width:300px;
 	margin:5px;
 	cursor:default;
+	padding:10px;
+	white-space: normal;
 }
 
 .question-quiz:hover,
@@ -129,21 +136,38 @@ p {
 	width:300px;
 	margin:5px;
 	cursor:default;
+
 }	
 
 .btn-table {
 	margin-left:1vw;
+	text-align: center;
+	white-space: normal;
+	width: 100px;
+	padding:5px;
 }
 
 
 .btn-quiz,
 .btn-quiz:active,
 .btn-quiz.active.focus,.btn-quiz.active:focus,.btn-quiz.active:hover,.btn-quiz:active.focus,.btn-quiz:active:focus,.btn-quiz:active:hover,.open>.dropdown-toggle.btn-quiz.focus,.open>.dropdown-toggle.btn-quiz:focus,.open>.dropdown-toggle.btn-quiz:hover {
-	color: #9900cc;
-	background-color:#f2f2f2;
+	-webkit-transition: all .1s ease-in-out;
+	-moz-transition: all .1s ease-in-out;
+	transition: all .1s ease-in-out;
+	color: #9900cc!important;
+	background-color:#f2f2f2!important;
 	height:90px;
 	width:150px;
 	margin:5px;
+	padding:5px;
+	white-space: normal;
+}
+
+.btn-quiz:focus,
+.btn-quiz:active,
+.btn-quiz.active.focus,.btn-quiz.active:focus,.btn-quiz.active:hover,.btn-quiz:active.focus,.btn-quiz:active:focus,.btn-quiz:active:hover,.open>.dropdown-toggle.btn-quiz.focus,.open>.dropdown-toggle.btn-quiz:focus,.open>.dropdown-toggle.btn-quiz:hover {
+	background-color: #9900cc!important;
+	color:#f2f2f2!important;
 }
 
 .btn-quiz:hover,
@@ -228,17 +252,9 @@ footer {
 		height:15vw;
 		width:45%;
 	}
-	.btn-quiz:focus,
-	.btn-quiz:active,
-	.btn-quiz.active.focus,.btn-quiz.active:focus,.btn-quiz.active:hover,.btn-quiz:active.focus,.btn-quiz:active:focus,.btn-quiz:active:hover,.open>.dropdown-toggle.btn-quiz.focus,.open>.dropdown-toggle.btn-quiz:focus,.open>.dropdown-toggle.btn-quiz:hover {
-		background-color: #9900cc!important;
-		color:#f2f2f2!important;
-	}
+
 
 	.btn-quiz {
-			-webkit-transition: all .1s ease-in-out;
-			-moz-transition: all .1s ease-in-out;
-			transition: all .1s ease-in-out;
 			color: #9900cc!important;
 			background-color:#f2f2f2!important;
 			height:15vw;
