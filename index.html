@@ -48,19 +48,18 @@
     
     <!-- Main Menu -->
 	<div class="menu main-menu hidden-menu" id="mainMenu">
-    
     	<div class="container" style="text-align:center;">
             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo('hiragana')">Hiragana (あ)</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo(info.hiragana.url)">Hiragana (あ)</button>
              </div>
              <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo('katakana')">Katakana (ア)</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo(info.katakana.url)">Katakana (ア)</button>
              </div>   
              <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo('kanji')">Kanji (学)</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo(info.kanji.url)">Kanji (学)</button>
             </div>
             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo('cyrillic')">Russian Cyrillic (Ж)</button>
+                <button type="button btn-lg" class="btn btn-default" onClick="goTo(info.cyrillic.url)">Russian Cyrillic (Ж)</button>
             </div>
         </div>
    </div>
@@ -178,5 +177,12 @@
     </footer>
 
 </body>
+
+<script>
+    //button deselects after click
+    $(".btn").mouseup(function(){
+        $(this).blur();
+    })
+</script>
 
 </html>
