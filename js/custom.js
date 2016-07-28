@@ -291,6 +291,7 @@ function MakeQuestion(x){
 
 function checkAnswer(button_id,x){
     var correct;
+
     var question=x.indexOf(document.getElementById("question-quiz").firstChild.data);
     var answer=x.indexOf(document.getElementById(button_id).firstChild.data);
     if((question%2===0&&question-answer===-1)||(question%2!==0&&question-answer===1)){
