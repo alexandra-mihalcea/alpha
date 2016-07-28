@@ -47,7 +47,7 @@ h6 {
     text-transform: uppercase;
     font-family: Noto Sans;
     font-weight: 700;
-    letter-spacing: 1px;
+	letter-spacing: 1px;
 	color:#FFF;
 }
 p {
@@ -208,7 +208,7 @@ footer {
 @media(max-width:845px) {
 	.title{
 		padding-top: 50px;
-		padding-bottom:0px;
+		padding-bottom:0;
 	}
 
 	h1{
@@ -246,7 +246,7 @@ footer {
 			font-size: 5vw;
 	}
 	.btn-skip{
-		margin-right:0px;
+		margin-right:0;
 		margin-bottom: 1vw;
 	}
 

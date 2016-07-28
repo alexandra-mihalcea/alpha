@@ -36,8 +36,8 @@ var Katakana=['a','ア', 'i', 'イ', 'u', 'ウ','e','エ', 'o','オ',
     'n','ン', null, null, null, null, null, null, null, null];
 
 var Kanji =   ['ichi(1)', '一', 'ni(2)','二', 'san(3)','三', 'yon(4)', '四',
-                'go(5)', '五','roku(6)', '六', 'nana(7)','七', 'hachi(8)','八',
-                'hyaku(100)', '百', 'sen(1000)', '千','man(10.000)', '万', 'nani(what)', '何'];
+    'go(5)', '五','roku(6)', '六', 'nana(7)','七', 'hachi(8)','八',
+    'hyaku(100)', '百', 'sen(1000)', '千','man(10.000)', '万', 'nani(what)', '何'];
 
 var Cyrillic=['a', 'а', 'b', 'б', 'v',  'в', 'g',  'г', 'd', 'д', 'e', 'е',
     'ë', 'ё',	 'ž', 'ж', 'z',  'з', 'i',  'и','j', 'й',  'k', 'к',
@@ -55,7 +55,7 @@ var info = {
         description:"Press on the letters to change beween hiragana and romaji.",
         url:"hiragana",
         rows:5,
-        buttonshape:"square",
+        buttonshape:"square"
     },
     katakana:{
         array: Katakana,
@@ -63,7 +63,7 @@ var info = {
         description:"Press on the letters to change beween katakana and romaji.",
         url:"katakana",
         rows:5,
-        buttonshape:"square",
+        buttonshape:"square"
     },
     kanji:{
         array: Kanji,
@@ -71,7 +71,7 @@ var info = {
         description:"Press on the letters to change beween kanji and romaji.",
         url:"kanji",
         rows:4,
-        buttonshape:"rectangle",
+        buttonshape:"rectangle"
     },
     cyrillic:{
         array: Cyrillic,
@@ -79,7 +79,7 @@ var info = {
         description:"Press on the letters to change beween cyrillic and their latin counterparts.",
         url:"cyrillic",
         rows:6,
-        buttonshape:"square",
+        buttonshape:"square"
     }
 
 };
@@ -103,11 +103,11 @@ function goTo(x){
 }
 
 function toggleVisibility(x){
-	var div = document.getElementById(x);
-		if(div.style.display == "block"){
-			div.style.display = "none";}
-		else{
-			div.style.display = "block";}	
+    var div = document.getElementById(x);
+    if(div.style.display == "block"){
+        div.style.display = "none";}
+    else{
+        div.style.display = "block";}
 }
 
 //Table Functions
@@ -119,47 +119,47 @@ function toggleText(button_id,a,b)  {
 }
 
 function GenerateTable(source){
-	
-	var counter=0, row=1,array;
-	goTo('table');
-	ResetTable();
-	document.getElementById("table-title").innerHTML=source.title;
-	document.getElementById("table-description").innerHTML=source.description;
-	document.getElementById("table-back-button").onclick = (function(a) {
-    return function() {
-       goTo(a);
-    };
-	})(source.url);
-	while(counter<source.array.length-1){
-		CreateRow(row);
-		for(var i=0;i<source.rows;i++){
-		    if(source.array[counter]||source.array[counter]===null){
-		        DecideButtonType(source.array[counter+1], source.array[counter],"table-row-"+row,source.rows, source.buttonshape);}
-		counter+=2;
-		}
-		row++;
-		
-	}
+
+    var counter=0, row=1;
+    goTo('table');
+    ResetTable();
+    document.getElementById("table-title").innerHTML=source.title;
+    document.getElementById("table-description").innerHTML=source.description;
+    document.getElementById("table-back-button").onclick = (function(a) {
+        return function() {
+            goTo(a);
+        };
+    })(source.url);
+    while(counter<source.array.length-1){
+        CreateRow(row);
+        for(var i=0;i<source.rows;i++){
+            if(source.array[counter]||source.array[counter]===null){
+                DecideButtonType(source.array[counter+1], source.array[counter],"table-row-"+row,source.rows, source.buttonshape);}
+            counter+=2;
+        }
+        row++;
+
+    }
 }
 function CreateRow(num){
-	var div = document.createElement('div');
-	div.className="row table-row force-inline";
-	div.id="table-row-"	+num;
-	var target = document.getElementById("table-inner-container");
-    target.appendChild(div);	
+    var div = document.createElement('div');
+    div.className="row table-row force-inline";
+    div.id="table-row-"	+num;
+    var target = document.getElementById("table-inner-container");
+    target.appendChild(div);
 }
 
 function DecideButtonType(face_a, face_b,target_ID,row_length, button_shape){
-	if(!document.getElementById(face_b)&&(face_a!==null||face_b!==null)){
-		CreateButton(face_a, face_b,target_ID,row_length, face_a, "btn btn-table", button_shape );
-	}
-	if(face_a===null||face_b===null){
-		CreateButton(face_a, face_b,target_ID,row_length,"empty-space", "btn btn-table btn-hidden btn-disabled", button_shape);
-	}
+    if(!document.getElementById(face_b)&&(face_a!==null||face_b!==null)){
+        CreateButton(face_a, face_b,target_ID,row_length, face_a, "btn btn-table", button_shape );
+    }
+    if(face_a===null||face_b===null){
+        CreateButton(face_a, face_b,target_ID,row_length,"empty-space", "btn btn-table btn-hidden btn-disabled", button_shape);
+    }
 }
 
 function CreateButton(face_a, face_b,target_ID,row_length,button_id, button_class, button_shape){
-	var button, t, target, size, font_size=5;
+    var button, t, target, size, font_size=5;
     console.log(window.innerWidth);
     if(window.innerWidth<1300){
         if(button_shape == "square"){
@@ -182,28 +182,28 @@ function CreateButton(face_a, face_b,target_ID,row_length,button_id, button_clas
     }
 
 
-	button = document.createElement("BUTTON");
-	t = document.createTextNode(face_a);
-	button.type="button";
-	button.className=button_class;
-	button.id=button_id;
+    button = document.createElement("BUTTON");
+    t = document.createTextNode(face_a);
+    button.type="button";
+    button.className=button_class;
+    button.id=button_id;
     if(button_shape === "square"){
         button.setAttribute("style", "width:"+size+"vw ;height:"+size+"vw; font-size: "+font_size+"vw;");}
     else{
         button.setAttribute("style", "width:"+size+"vw ;height:"+size/2+"vw; font-size: "+font_size+"vw;");}
-	button.appendChild(t);
-	button.onclick = (function(a,b,c) {
-	return function() {
-		  toggleText(a,b,c);
-	};
-	})(button.id,face_a, face_b);
-	target = document.getElementById(target_ID);
-	target.appendChild(button);	
+    button.appendChild(t);
+    button.onclick = (function(a,b,c) {
+        return function() {
+            toggleText(a,b,c);
+        };
+    })(button.id,face_a, face_b);
+    target = document.getElementById(target_ID);
+    target.appendChild(button);
 }
 
-function ResetTable(){	
-	var target = document.getElementById("table-inner-container");
-	$(target).empty();
+function ResetTable(){
+    var target = document.getElementById("table-inner-container");
+    $(target).empty();
 }
 
 
@@ -211,99 +211,99 @@ function ResetTable(){
 //Quiz Functions
 
 function TakeQuiz(source){
-	ResetScore();
-	goTo('quiz');
-	document.getElementById("quiz-title").innerHTML=source.title;
-	document.getElementById("quiz-back-button").onclick = (function(a) {
-		return function() {
-		   goTo(a);
-		};
-	})(source.url);
-	document.getElementById("quiz-skip-button").onclick = (function(a) {
-		return function() {
-		   MakeQuestion(a);
-		};
-	})(source.array);
-	document.getElementById("quiz-skip-button").className += " btn-skip";
-	MakeQuestion(source.array);
-	var buttons = document.getElementsByClassName("btn-quiz");
-	for(var i=0; i<4;i++){
-		var button_id=buttons[i].id;
-		buttons[i].onclick = (function(opt1, opt2) {
-		return function() {
-		   checkAnswer(opt1, opt2);
-		   MakeQuestion(source.array);
-		   UpdateScore();
-		};
-		})(button_id,source.array);
-	}
+    ResetScore();
+    goTo('quiz');
+    document.getElementById("quiz-title").innerHTML=source.title;
+    document.getElementById("quiz-back-button").onclick = (function(a) {
+        return function() {
+            goTo(a);
+        };
+    })(source.url);
+    document.getElementById("quiz-skip-button").onclick = (function(a) {
+        return function() {
+            MakeQuestion(a);
+        };
+    })(source.array);
+    document.getElementById("quiz-skip-button").className += " btn-skip";
+    MakeQuestion(source.array);
+    var buttons = document.getElementsByClassName("btn-quiz");
+    for(var i=0; i<4;i++){
+        var button_id=buttons[i].id;
+        buttons[i].onclick = (function(opt1, opt2) {
+            return function() {
+                checkAnswer(opt1, opt2);
+                MakeQuestion(source.array);
+                UpdateScore();
+            };
+        })(button_id,source.array);
+    }
 }
 
 function UpdateScore(){
-		var total= correct_answers+wrong_answers;
-		var result;
-		result = (correct_answers*100)/total;
-		document.getElementById("quiz-percentage").innerHTML=(correct_answers+" ("+result.toFixed(2))+"%) correct answers out of "+total+"!";
+    var total= correct_answers+wrong_answers;
+    var result;
+    result = (correct_answers*100)/total;
+    document.getElementById("quiz-percentage").innerHTML=(correct_answers+" ("+result.toFixed(2))+"%) correct answers out of "+total+"!";
 }
 
 function ResetScore(){
-		document.getElementById("quiz-percentage").innerHTML=(" ");
-		window.correct_answers=0;
-		 window.wrong_answers=0;	
+    document.getElementById("quiz-percentage").innerHTML=(" ");
+    window.correct_answers=0;
+    window.wrong_answers=0;
 }
 
 function MakeQuestion(x){
-	var type=Math.floor(Math.random() * 2);
-	if (type===0){
-	type=type-1;
-	}
-	var question;
-	do{
-		question=Math.floor(Math.random() * x.length-2)-type;}while( x[question]===null||question<0);
-	var correct_answer, temp;
-	if(question %2===0){
-		correct_answer=question+1;
-	}
-	else{
-		correct_answer=question-1;
-	}
-	document.getElementById("question-quiz").firstChild.data=x[question];
-	
-	var buttons = document.getElementsByClassName("btn-quiz");
-	
-	var answer=[];
-	
-	for(var i=0; i<4;i++){
-		do{
-		temp=Math.floor(Math.random() * x.length-2)+type;
-		}while(question%2===temp%2||x[temp]===null||temp<0||answer.includes(x[temp])||temp===correct_answer);//prevent any duplicates or any empty tiles
-		answer[i]=x[temp];
-	}
-	var correct_num=Math.floor(Math.random() * 4);
-	answer[correct_num]=x[correct_answer];
-	
-	for(i=0; i<4;i++){
-		buttons[i].firstChild.data = answer[i];
-	}
-	
+    var type=Math.floor(Math.random() * 2);
+    if (type===0){
+        type=type-1;
+    }
+    var question;
+    do{
+        question=Math.floor(Math.random() * x.length-2)-type;}while( x[question]===null||question<0);
+    var correct_answer, temp;
+    if(question %2===0){
+        correct_answer=question+1;
+    }
+    else{
+        correct_answer=question-1;
+    }
+    document.getElementById("question-quiz").firstChild.data=x[question];
+
+    var buttons = document.getElementsByClassName("btn-quiz");
+
+    var answer=[];
+
+    for(var i=0; i<4;i++){
+        do{
+            temp=Math.floor(Math.random() * x.length-2)+type;
+        }while(question%2===temp%2||x[temp]===null||temp<0||answer.includes(x[temp])||temp===correct_answer);//prevent any duplicates or any empty tiles
+        answer[i]=x[temp];
+    }
+    var correct_num=Math.floor(Math.random() * 4);
+    answer[correct_num]=x[correct_answer];
+
+    for(i=0; i<4;i++){
+        buttons[i].firstChild.data = answer[i];
+    }
+
 }
 
 
 function checkAnswer(button_id,x){
-		var correct;
-		var question=x.indexOf(document.getElementById("question-quiz").firstChild.data);
-		var answer=x.indexOf(document.getElementById(button_id).firstChild.data);
-		if((question%2===0&&question-answer===-1)||(question%2!==0&&question-answer===1)){
-			correct=true;
-		}
-		else{
-			correct=false;	
-		}
-		if(correct){
-		 correct_answers++;	
-		}
-		else{
-		 wrong_answers++;	
-		}
-		return(correct);
-	}
+    var correct;
+    var question=x.indexOf(document.getElementById("question-quiz").firstChild.data);
+    var answer=x.indexOf(document.getElementById(button_id).firstChild.data);
+    if((question%2===0&&question-answer===-1)||(question%2!==0&&question-answer===1)){
+        correct=true;
+    }
+    else{
+        correct=false;
+    }
+    if(correct){
+        correct_answers++;
+    }
+    else{
+        wrong_answers++;
+    }
+    return(correct);
+}
