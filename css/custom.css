@@ -147,6 +147,9 @@ p {
 	padding:5px;
 }
 
+.container {
+	text-align: center;
+}
 
 .btn-quiz,
 .btn-quiz:active,

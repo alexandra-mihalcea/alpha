@@ -61,34 +61,38 @@ var info = {
     hiragana:{
         array: Hiragana,
         title:"Hiragana ( ひらがな )",
-        description:"Press on the letters to change beween hiragana and romaji.",
+        description:"Press on the letters to change between hiragana and romaji.",
         url:"hiragana",
         rows:5,
-        buttonshape:"square"
+        buttonshape:"square",
+        buttonname: "Hiragana (あ)"
     },
     katakana:{
         array: Katakana,
         title:"Katakana ( カタカナ )",
-        description:"Press on the letters to change beween katakana and romaji.",
+        description:"Press on the letters to change between katakana and romaji.",
         url:"katakana",
         rows:5,
-        buttonshape:"square"
+        buttonshape:"square",
+        buttonname:"Katakana (ア)"
     },
     kanji:{
         array: Kanji,
         title:"Kanji (漢字)",
-        description:"Press on the letters to change beween kanji and romaji.",
+        description:"Press on the letters to change between kanji and romaji.",
         url:"kanji",
         rows:3,
-        buttonshape:"rectangle"
+        buttonshape:"rectangle",
+        buttonname:"Kanji (学)"
     },
     cyrillic:{
         array: Cyrillic,
         title:"Russian Cyrillic (кириллица)",
-        description:"Press on the letters to change beween cyrillic and their latin counterparts.",
+        description:"Press on the letters to change between cyrillic and their latin counterparts.",
         url:"cyrillic",
         rows:6,
-        buttonshape:"square"
+        buttonshape:"square",
+        buttonname:"Russian Cyrillic (Ж)"
     }
 
 };
@@ -97,13 +101,13 @@ var correct_answers, wrong_answers;
 
 //Set main menu to visible while loading
 window.onload = function() {
-    var target = document.getElementById("mainMenu");
+    GenerateMainMenu(info)
+    var target = document.getElementById("main-menu");
     target.style.display = "block";
 };
 
 //switch between pages
 function goTo(x){
-    console.log(x);
     var div = document.getElementsByClassName("hidden-menu");
     for(var i=0;i<div.length;i++){
         div[i].style.display = "none";}
@@ -117,6 +121,55 @@ function toggleVisibility(x){
         div.style.display = "none";}
     else{
         div.style.display = "block";}
+}
+
+//generate Main Menu
+function GenerateMainMenu(source){
+    for(item in source) {
+        CreateMainMenuButton(source[item]);
+    }
+    goTo("main-menu");
+}
+
+function CreateMainMenuButton(source){
+    //create Row
+    var row = document.createElement('div');
+    row.className="row";
+    row.id="menu-row-"+source.url;
+    var target = document.getElementById("main-menu-container");
+    target.appendChild(row);
+    //create Button
+    button = document.createElement("BUTTON");
+    var text = document.createTextNode(source.buttonname);
+    button.type="button";
+    button.className="btn btn-default";
+    button.appendChild(text);
+    button.onclick = (function(target) {
+        return function() {
+            GenerateMenu(target);
+        };
+    })(source);
+    row.appendChild(button);
+}
+
+//generate Individual Menus
+function GenerateMenu(source){
+    goTo("language-menu");
+    var container = document.getElementById("language-menu-container");
+    var title = document.getElementById("language-menu-title");
+    title.innerHTML=source.title;
+    var table_button = document.getElementById("table-button");
+    table_button.onclick = (function(target) {
+        return function() {
+            GenerateTable(target)
+        };
+    })(source);
+    var quiz_button = document.getElementById("quiz-button");
+    quiz_button.onclick = (function(target) {
+        return function() {
+            TakeQuiz(target)
+        };
+    })(source);
 }
 
 //Table Functions
@@ -136,9 +189,9 @@ function GenerateTable(source){
     document.getElementById("table-description").innerHTML=source.description;
     document.getElementById("table-back-button").onclick = (function(a) {
         return function() {
-            goTo(a);
+            GenerateMenu(a);
         };
-    })(source.url);
+    })(source);
     while(counter<source.array.length-1){
         CreateRow(row);
         for(var i=0;i<source.rows;i++){
@@ -225,9 +278,9 @@ function TakeQuiz(source){
     document.getElementById("quiz-title").innerHTML=source.title;
     document.getElementById("quiz-back-button").onclick = (function(a) {
         return function() {
-            goTo(a);
+            GenerateMenu(a);
         };
-    })(source.url);
+    })(source);
     document.getElementById("quiz-skip-button").onclick = (function(a) {
         return function() {
             MakeQuestion(a);

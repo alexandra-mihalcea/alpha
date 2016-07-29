@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content=" A tool meant to assist people learning different alphabets. ">
+    <meta name="description" content=" A tool meant to assist people with learning different alphabets. ">
     <meta name="author" content=" Alexandra Mihalcea ">
 
     <title> Alphabet Learning Assistant </title>
@@ -17,7 +17,7 @@
     <!-- Custom CSS -->
     <link href="css/custom.css" rel="stylesheet">
     
-	<!--Seting up a Favicon--->
+	<!--Setting up a Favicon--->
 	<link rel="shortcut icon" type="image/x-icon" href="img/favicon-mortar-board.ico" />
     
     <!-- Custom Fonts -->
@@ -47,27 +47,31 @@
     	<div class="col-lg-12 title-text"> <h1>  <i class="fa fa-mortar-board fa-fw" style="color:#9900cc"></i> Alphabet Learning Assistant </h1></div></div>
     
     <!-- Main Menu -->
-	<div class="menu main-menu hidden-menu" id="mainMenu">
-    	<div class="container" style="text-align:center;">
-            <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo(info.hiragana.url)">Hiragana (あ)</button>
-             </div>
-             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo(info.katakana.url)">Katakana (ア)</button>
-             </div>   
-             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo(info.kanji.url)">Kanji (学)</button>
-            </div>
-            <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo(info.cyrillic.url)">Russian Cyrillic (Ж)</button>
-            </div>
+	<div class="menu main-menu hidden-menu" id="main-menu">
+    	<div class="container" id="main-menu-container">
         </div>
    </div>
-   
-   
+
+    <!-- Language Menu -->
+    <div class="menu hidden-menu language-menu" id="language-menu">
+        <div class="container" id="language-menu-container">
+            <h2 style="color:#9900cc" id="language-menu-title"> </h2>
+            <div class="row">
+                <button type="button" class="btn btn-default" id="table-button">View Table</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-default" id="quiz-button">Start Quiz</button>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-default" onClick="goTo('main-menu')">Back to Main Menu</button>
+            </div>
+
+        </div>
+    </div>
+
    <!-- Letter Table -->
     <div class="menu hidden-menu" id="table">
-       	<div class="container" style="text-align:center;" id="table-container">
+       	<div class="container" id="table-container">
         	<h2 id="table-title" style="color:#9900cc"> </h2>
             <div class="row" style="padding-top:30px" >
                 <button id="table-back-button" type="button" class="btn btn-default">Go back</button>
@@ -102,72 +106,6 @@
             </div>
         </div>
    </div>
- 
-<!-- Hiragana -->
-   <div class="menu hidden-menu" id="hiragana">
-       	<div class="container" style="text-align:center;">
-        	<h2 style="color:#9900cc"> Hiragana ( ひらがな )</h2>
-            <div class="row">
-                <button type="button" class="btn btn-default" onClick="GenerateTable(info.hiragana)">View Table</button>
-             </div>
-             <div class="row">
-                <button type="button" class="btn btn-default" onClick="TakeQuiz(info.hiragana);">Start Quiz</button>
-             </div>   
-            <div class="row">
-                <button type="button" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
-            </div>
-            
-        </div>
-   </div>
-    
-<!-- Katakana -->
-   <div class="menu hidden-menu" id="katakana">
-   	<div class="container" style="text-align:center;">
-        	<h2 style="color:#9900cc"> Katakana ( カタカナ )</h2>
-            <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(info.katakana)">View Table</button>
-             </div>
-             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(info.katakana);">Start Quiz</button>
-             </div>               
-            <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
-            </div>
-        </div>
-   </div>
-   
-   <!-- Kanji -->
-   <div class="menu hidden-menu" id="kanji">
-   		<div class="container" style="text-align:center;">
-        	<h2 style="color:#9900cc"> Kanji (漢字) </h2>
-			<div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(info.kanji)">View Table</button>
-             </div>   				
-             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(info.kanji);">Start Quiz</button>
-             </div>
-             <div class="row">
-                	<button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
-                </div>
-            </div>
-   </div>
-   
-   <!-- Cyrillic -->
-   <div class="menu hidden-menu" id="cyrillic">
-   	<div class="container" style="text-align:center;">
-        	<h2 style="color:#9900cc"> Russian Cyrillic (кириллица)</h2>
-            <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="GenerateTable(info.cyrillic)">View Table</button>
-             </div>
-             <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="TakeQuiz(info.cyrillic);">Start Quiz</button>
-             </div>               
-            <div class="row">
-                <button type="button btn-lg" class="btn btn-default" onClick="goTo('mainMenu')">Back to Main Menu</button>
-            </div>
-        </div>
-   </div>
- 
    
     <!-- Footer -->
     <footer>
