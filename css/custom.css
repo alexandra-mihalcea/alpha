@@ -266,5 +266,8 @@ footer {
 		margin-right:0;
 		margin-bottom: 1vw;
 	}
+	.row{
+		padding: 1vw;
+	}
 
 }
