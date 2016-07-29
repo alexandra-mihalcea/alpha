@@ -56,6 +56,17 @@ var Cyrillic=['a', 'а', 'b', 'б', 'v',  'в', 'g',  'г', 'd', 'д', 'e', 'е'
     'â', 'я', null, null, null, null, null, null, null, null, null, null];
 
 
+var Hangul=['g','ㄱ', 'n', 'ㄴ', 'd', 'ㄷ','r/l','ㄹ', 'm','ㅁ',
+            'b','ㅂ', 's', 'ㅅ', 'ng','ㅇ' ,'j', 'ㅈ','ch','ㅊ',
+            'k', 'ㅋ', 't', 'ㅌ', 'p', 'ㅍ', 'h','ㅎ', null, null,
+            'kk', 'ㄲ', 'tt', 'ㄸ', 'pp', 'ㅃ', 'ss', 'ㅆ', 'jj', 'ㅉ',
+            'a', 'ㅏ', 'eo', 'ㅓ', 'o', 'ㅗ', 'u', 'ㅜ', 'eu', 'ㅡ',
+            'i', 'ㅣ', 'ya', 'ㅑ', 'yeo', 'ㅕ', 'yo', 'ㅛ', 'yu', 'ㅠ',
+            'ae', 'ㅐ', 'yae', 'ㅒ', 'e', 'ㅔ', 'ye', 'ㅖ', 'ui', 'ㅢ',
+            'wa', 'ㅘ', 'wae', 'ㅙ', 'oe', 'ㅚ', 'wo', 'ㅝ', 'we', 'ㅞ',
+            'wi', 'ㅟ', null, null, null, null, null, null, null, null];
+
+
 //page information
 var info = {
     hiragana:{
@@ -93,6 +104,15 @@ var info = {
         rows:6,
         buttonshape:"square",
         buttonname:"Russian Cyrillic (Ж)"
+    },
+    hangul:{
+        array: Hangul,
+        title:"Korean Hangul(한글)",
+        description:"Press on the letters to change between hangul and their latin counterparts.",
+        url:"hangul",
+        rows:5,
+        buttonshape:"square",
+        buttonname:"Korean Hangul (ㅎ)"
     }
 
 };
@@ -101,7 +121,7 @@ var correct_answers, wrong_answers;
 
 //Set main menu to visible while loading
 window.onload = function() {
-    GenerateMainMenu(info)
+    GenerateMainMenu(info);
     var target = document.getElementById("main-menu");
     target.style.display = "block";
 };
@@ -222,7 +242,6 @@ function DecideButtonType(face_a, face_b,target_ID,row_length, button_shape){
 
 function CreateButton(face_a, face_b,target_ID,row_length,button_id, button_class, button_shape){
     var button, t, target, size, font_size=5;
-    console.log(window.innerWidth);
     if(window.innerWidth<1300){
         if(button_shape == "square"){
             size=75/row_length;
