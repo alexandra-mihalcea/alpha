@@ -72,22 +72,20 @@ p {
 
 .btn {
 	color: #9900cc;
-	background-color: #f2f2f2;
+	background-color:#f2f2f2;
 	border: none;
 	outline: none;
-	border-radius: 2px;
-	font-family: Noto Sans;
-	font-weight: 600;
+    border-radius: 2px;
+    font-family: Noto Sans;
+    font-weight: 600;
 	font-size: 25px;
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
-	height: 60px;
-	width: 300px;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+	height:60px;
+	width:300px;
 	padding: 0;
-	display: inline-block;
 }
-
 
 .btn:hover,
 .btn:active:hover,
