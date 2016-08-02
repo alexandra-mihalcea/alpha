@@ -88,12 +88,20 @@ p {
 }
 
 .btn:hover,
-.btn:focus,
-.btn:active,
-.btn.active.focus,.btn.active:focus,.btn.active:hover,.btn:active.focus,.btn:active:focus,.btn:active:hover,.open>.dropdown-toggle.btn.focus,.open>.dropdown-toggle.btn:focus,.open>.dropdown-toggle.btn:hover {
+.btn:active:hover,
+.btn:focus:hover{
 	color: #f2f2f2;
 	background-color:#9900cc;
 	word-spacing: 0;
+	border: none;
+	outline: none;
+}
+
+.btn:active,
+.btn:focus
+{
+	color: #9900cc;
+	background-color:#f2f2f2;
 	border: none;
 	outline: none;
 }
@@ -151,12 +159,24 @@ p {
 	text-align: center;
 }
 
+
+.btn-quiz:hover,
+.btn-quiz:active:hover,
+.btn-quiz:focus:hover{
+
+	background-color: #9900cc!important;
+	color:#f2f2f2!important;
+	height:95px;
+	width:155px;
+}
+
 .btn-quiz,
 .btn-quiz:active,
-.btn-quiz.active.focus,.btn-quiz.active:focus,.btn-quiz.active:hover,.btn-quiz:active.focus,.btn-quiz:active:focus,.btn-quiz:active:hover,.open>.dropdown-toggle.btn-quiz.focus,.open>.dropdown-toggle.btn-quiz:focus,.open>.dropdown-toggle.btn-quiz:hover {
-	-webkit-transition: all .1s ease-in-out;
-	-moz-transition: all .1s ease-in-out;
-	transition: all .1s ease-in-out;
+.btn-quiz:focus
+{
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
 	color: #9900cc!important;
 	background-color:#f2f2f2!important;
 	height:90px;
@@ -164,24 +184,8 @@ p {
 	margin:5px;
 	padding:5px;
 	white-space: normal;
+
 }
-
-.btn-quiz:focus,
-.btn-quiz:active,
-.btn-quiz.active.focus,.btn-quiz.active:focus,.btn-quiz.active:hover,.btn-quiz:active.focus,.btn-quiz:active:focus,.btn-quiz:active:hover,.open>.dropdown-toggle.btn-quiz.focus,.open>.dropdown-toggle.btn-quiz:focus,.open>.dropdown-toggle.btn-quiz:hover {
-	background-color: #9900cc!important;
-	color:#f2f2f2!important;
-}
-
-.btn-quiz:hover,
-.btn-quiz:focus,
-.btn-quiz:active,
-.btn-quiz.active.focus,.btn-quiz.active:focus,.btn-quiz.active:hover,.btn-quiz:active.focus,.btn-quiz:active:focus,.btn-quiz:active:hover,.open>.dropdown-toggle.btn-quiz.focus,.open>.dropdown-toggle.btn-quiz:focus,.open>.dropdown-toggle.btn-quiz:hover {
-	height:100px;
-	width:160px;
-}
-
-
 
 
 
