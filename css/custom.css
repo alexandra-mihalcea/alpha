@@ -250,6 +250,35 @@ footer {
 		border-color: transparent!important;
 		cursor: default!important;
 	}
+	.btn-reverse,
+	.btn-reverse:hover,
+	.btn-reverse:active:hover,
+	.btn-reverse:focus:hover{
+		color: #f2f2f2!important;
+		background-color:#9900cc!important;
+	}
+	@media(min-width:745px) {
+		.btn-quiz:hover,
+		.btn-quiz:active:hover,
+		.btn-quiz:focus:hover,
+		.btn-quiz,
+		.btn-quiz:active,
+		.btn-quiz:focus
+		{
+			-webkit-transition: all .3s ease-in-out;
+			-moz-transition: all .3s ease-in-out;
+			transition: all .3s ease-in-out;
+			color: #9900cc!important;
+			background-color:#f2f2f2!important;
+			height:90px;
+			width:150px;
+			margin:5px;
+			padding:5px;
+			white-space: normal;
+
+		}
+	}
+
 }
 
 
