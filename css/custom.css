@@ -216,11 +216,9 @@ p {
 
 footer {
     text-align: center;
-    /* padding: 150px 0 50px 0; */
     margin-left: auto;
     margin-right: auto;
     cursor: default;
-    position: absolute;
     right: 0;
     bottom: 0;
     left: 0;
