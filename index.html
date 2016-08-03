@@ -34,7 +34,7 @@
         <link href="img/mobile-homescreen/icon-hires.png" rel="icon" sizes="192x192" />
         <link href="img/mobile-homescreen/icon-normal.png" rel="icon" sizes="128x128" />
         <!-- Add Mobile Splash Screen-->
-        <link rel="apple-touch-startup-image" href="/img/startup.png">
+        <link rel="apple-touch-startup-image" media="(device-width: 320px)" href="/img/startup.png">
         <!-- Hide safari interface-->
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
@@ -130,17 +130,11 @@
     <!-- Footer -->
     <footer>
         <div class="container text-center">
-            <h6>Copyright &copy; Alexandra Mihalcea <script>document.write(new Date().getFullYear())</script></h6>
+            <h6>Copyright &copy; Alexandra Mihalcea & Eduard Kotkas <script>document.write(new Date().getFullYear())</script></h6>
         </div>
     </footer>
 
 </body>
 
-<script>
-    //button deselects after click
-    $(".btn").mouseup(function(){
-        $(this).blur();
-    })
-</script>
 
 </html>
