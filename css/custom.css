@@ -114,6 +114,20 @@ p {
 	outline: none;
 }
 
+
+.btn-reverse {
+	color: #f2f2f2!important;
+	background-color:#9900cc!important;
+}
+
+.btn-reverse:hover,
+.btn-reverse:active:hover,
+.btn-reverse:focus:hover{
+	color: #9900cc!important;
+	background-color:#f2f2f2!important;
+}
+
+
 .btn-hidden{
 	color: transparent !important;
 	background-color: transparent!important;
@@ -229,6 +243,12 @@ footer {
 		word-spacing: 0;
 		border: none;
 		outline: none;
+	}
+	.btn-hidden{
+		color: transparent !important;
+		background-color: transparent!important;
+		border-color: transparent!important;
+		cursor: default!important;
 	}
 }
 

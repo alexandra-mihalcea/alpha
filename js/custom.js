@@ -135,13 +135,7 @@ function goTo(x){
     target.style.display = "block";
 }
 
-function toggleVisibility(x){
-    var div = document.getElementById(x);
-    if(div.style.display == "block"){
-        div.style.display = "none";}
-    else{
-        div.style.display = "block";}
-}
+
 
 //generate Main Menu
 function GenerateMainMenu(source){
@@ -276,10 +270,20 @@ function CreateButton(face_a, face_b,target_ID,row_length,button_id, button_clas
     button.onclick = (function(a,b,c) {
         return function() {
             toggleText(a,b,c);
+            toggleButtonColor(a);
         };
     })(button.id,face_a, face_b);
     target = document.getElementById(target_ID);
     target.appendChild(button);
+}
+
+function toggleButtonColor(x){
+    var target = document.getElementById(x);
+    console.log(target.className);
+    if(target.className==="btn btn-table"){
+        target.className="btn btn-table btn-reverse";}
+    else if(target.className==="btn btn-table btn-reverse"){
+        target.className="btn btn-table";}
 }
 
 function ResetTable(){
