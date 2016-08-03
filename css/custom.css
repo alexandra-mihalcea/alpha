@@ -234,12 +234,6 @@ footer {
 }
 
 @media (pointer:coarse) {
-	.btn{
-		-webkit-transition: none !important;
-		-moz-transition: none !important;
-		-o-transition: none !important;
-		transition: none !important;
-	}
 	.btn,
 	.btn:hover,
 	.btn:active:hover,
