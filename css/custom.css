@@ -277,7 +277,6 @@ footer {
 		width:45%;
 	}
 
-
 	.btn-quiz {
 			color: #9900cc!important;
 			background-color:#f2f2f2!important;
@@ -292,5 +291,7 @@ footer {
 	.row{
 		padding: 1vw;
 	}
-
+	h6{
+		font-size: 2.5vw;
+	}
 }
