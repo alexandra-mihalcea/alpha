@@ -51,6 +51,11 @@ h6 {
 	color:#FFF;
 }
 
+h2#language-menu-title {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
 @media(max-width:745px) {
   h1 .fa-fw {
     width: 100%;
