@@ -195,7 +195,9 @@ p {
 
 }
 
-
+.quiz-lower-btn{
+	padding-top:50px;
+}
 
 .btn-default:hover,
 .btn-default:focus,
@@ -273,13 +275,12 @@ footer {
 	.btn-quiz:focus,
 	.btn-quiz:active,
 	.btn-quiz.active.focus,.btn-quiz.active:focus,.btn-quiz.active:hover,.btn-quiz:active.focus,.btn-quiz:active:focus,.btn-quiz:active:hover,.open>.dropdown-toggle.btn-quiz.focus,.open>.dropdown-toggle.btn-quiz:focus,.open>.dropdown-toggle.btn-quiz:hover {
-		height:15vw;
-		width:45%;
+		height: 15vw !important;;
+		width:45% !important;
 	}
 
-	.btn-quiz {
-			color: #9900cc!important;
-			background-color:#f2f2f2!important;
+	.btn-quiz{
+
 			height:15vw;
 			width:45%;
 			font-size: 5vw;
@@ -293,5 +294,8 @@ footer {
 	}
 	h6{
 		font-size: 2.5vw;
+	}
+	.quiz-lower-btn{
+		padding-top: 0;
 	}
 }
