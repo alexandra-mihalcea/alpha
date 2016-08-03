@@ -217,7 +217,18 @@ footer {
 	cursor: default;
 }
 
-
+@media (pointer:coarse) {
+	.btn,
+	.btn:hover,
+	.btn:active:hover,
+	.btn:focus:hover{
+		color: #9900cc!important;
+		background-color:#f2f2f2!important;
+		word-spacing: 0;
+		border: none;
+		outline: none;
+	}
+}
 
 
 @media(max-width:745px) {
