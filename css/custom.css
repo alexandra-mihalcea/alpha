@@ -43,12 +43,17 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 35px;
+    margin: 0 0 0;
     text-transform: uppercase;
     font-family: Noto Sans;
     font-weight: 700;
 	letter-spacing: 1px;
 	color:#FFF;
+}
+
+h2#language-menu-title {
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 @media(max-width:745px) {
@@ -226,11 +231,15 @@ p {
 }
 
 footer {
-	text-align: center;
-    padding: 150px 0 50px 0;
-	margin-left: auto;
-	margin-right: auto;
-	cursor: default;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: default;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
 }
 
 @media (pointer:coarse) {
@@ -306,7 +315,7 @@ footer {
 	}
 
 	.title{
-		padding-top: 50px;
+		padding-top: 10px;
 		padding-bottom:0;
 	}
 
